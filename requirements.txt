@@ -1,0 +1,2 @@
+#use the latest version of numpy
+numpy
