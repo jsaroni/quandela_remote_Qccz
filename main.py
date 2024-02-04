@@ -1,10 +1,10 @@
-#This is an example of the file you must have in your main git branch
 import perceval as pcvl
 import math
 import numpy as np
 from perceval.utils import Encoding, PostSelect, Matrix
 from perceval.components import Circuit, Port, Unitary
 
+#first part
 def get_CCZ() -> pcvl.Processor:
 
     processor = pcvl.Processor("MPS", 6)
@@ -26,4 +26,11 @@ def get_CCZ() -> pcvl.Processor:
 
     return processor
 
-print(get_CCZ())
+#second part
+def special_CZ() -> pcvl.Processor:
+
+    processor = pcvl.Processor("MPS", 8)
+    CZCZ = Matrix( [[1,0,0,0,0,0,0,0], [0,1,0,0,0,0,0,0], [0,0,1,0,0,0,0,0], [0,0,0,-1,0,0,0,0], [0,0,0,0,1,0,0,0], [0,0,0,0,0,-1,0,0], [0,0,0,0,0,0,1,0], [0,0,0,0,0,0,0,1]] )
+    processor.add((0,1,2,3,4,5,6,7), Unitary(CZCZ))
+
+    return processor
